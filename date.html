@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>date</title>
+</head>
+
+<style>
+    div{
+        background-color: darkkhaki;
+        padding: 6px;
+        text-align: center;
+    }
+    
+    
+    .fecha{
+        padding: 3px;
+        width: 115px;
+        border: 2px solid black;
+        
+    }
+    .fecha .anio{
+        background-color: fuchsia;
+        padding: 3px;
+        color: white;
+            
+    }
+    
+    
+    
+    
+    </style>
+<body>
+   <section>
+       <!--.fecha>.anio+.dia>span^+.mes-->
+       
+       <div class="fecha">
+           <div class="anio">
+               1900
+           </div>
+           <div class="dia">
+           25
+           <span>lunes</span>
+           </div>
+           <div class="mes">
+               marzo
+           </div>
+       </div>
+       
+   </section>
+   
+   
+    <script>
+    function escribir(x){
+        document.write(x+"<br>");
+    }
+
+        
+        var fecha= new Date();//fecha actual
+        var fecha2= new Date(1998,11,25,17,35,47);//año,mes,dia,horas,minutos,segundos
+        var fecha3= new Date(1990,2,27);
+        
+        escribir(fecha);//gmt hora mundial, tambien esta utc que lo reemplaza
+        escribir(fecha2);
+        //escribir(fecha3);
+        
+        //metodos
+        
+        
+        var diaSemana= ["domingo","lunes","marte", "miercoles","jueves","viernes","sabado"];
+        
+        var meses= ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+        
+        fecha2.setHours(12);
+        escribir(fecha2);
+        
+        var horas= [12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11];//esa 12 del principio es la media noche
+        
+        function agregarCero(c){
+            if(c<10){//si el numero es menor a 10 es decir, 1,2,3...,9, que le ponga un 0 delante
+                 c= "0"+c
+            }
+            return c;
+        }
+        var meridiano;
+        
+        if(fecha2.getHours()<=11){
+            meridiano= " a. m.";
+        }else if(fecha2.getHours()==12){
+            meridiano= " m.";//mediodia
+        }else{
+            meridiano= " p. m.";
+        }
+        
+        
+        var h= agregarCero(horas[fecha2.getHours()]);//si son las 13, el indice 13 del array horas es la 1
+        var m = agregarCero(fecha2.getMinutes());
+        var s= agregarCero(fecha2.getSeconds());
+        
+        escribir(h+":"+m+":"+s+meridiano);
+        
+        escribir("hoy es "+diaSemana[fecha2.getDay()]);
+        escribir("hoy estamos a "+meses[fecha2.getMonth()]);//para getmonth enero es indice 0
+        
+        var seccion= document.getElementsByTagName("section")[0];
+        
+        seccion.innerHTML=  
+            '<div class="fecha">'+
+                    '<div class="anio">'+fecha.getFullYear()+'</div>'+
+                    '<div style="background-color:#fff;"class="dia">'+fecha.getDate()+'<span style="display:block;"> '+diaSemana[fecha.getDay()]+'</span>'+'</div>'+
+                    '<div class="mes">'+meses[fecha.getMonth()];+'</div>'+
+            '</div>';
+       
+        
+        
+    </script>
+</body>
+</html>

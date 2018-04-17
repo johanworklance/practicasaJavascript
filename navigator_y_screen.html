@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background: aqua;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+    </style>
+    <section>
+       <button id="boton">posicion</button>
+        <script>
+        function escribir(x){
+            document.write(x+"<br>");
+        }
+        escribir(navigator.appCodeName);
+        escribir(navigator.appName);
+        escribir(navigator.appVersion);
+        escribir(navigator.cookieEnabled);//si acepta cookies
+        escribir(navigator.geolocation);//si soporta geolocation
+        escribir(navigator.language);
+        escribir(navigator.online);
+        escribir(navigator.platform);
+        escribir(navigator.product);
+        escribir(navigator.userAgent);
+        
+        escribir(navigator.javaEnabled());
+        var boton= document.getElementById("boton");
+            
+            function geoPosicion(){
+                if(navigator.geolocation){//si el navegador tiene geolocation pues true
+                    navigator.geolocation.getCurrentPosition(mostrarPosicion);//este metodo recibecomo parametro otra funcion, y a esa el le enviara una variable la cual es
+                }else{
+                    alert("su navegador no soporta geolocalizacion");
+                }
+            }
+            
+            function mostrarPosicion(posicion){//esta de aqui, que nos dara los valores que necesitamos
+                
+                alert("latitud: "+posicion.coords.latitude+"longitud: "+posicion.coords.longitude);//esta mrda no funciono, no se que hac el navegador que no deja hacer nada
+            }
+            
+            boton.addEventListener("click",geoPosicion);
+            
+            //pantalla del usuario
+            escribir(screen.width);
+            escribir(screen.height);
+            escribir(screen.availHeight);//pantalla del usuario menos la barra de windows
+            escribir(screen.availWidth);
+            escribir(screen.colorDepth);
+            escribir(screen.pixelDepth);
+            
+            
+            if(screen.availWidth<=768){
+                console.log("takata");
+            }
+    </script>
+        
+    </section>
+   
+</body>
+</html>

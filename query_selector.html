@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background-color: azure;
+            margin-bottom: 10px;
+        }
+       .caja1,
+       .caja2{
+           width: 200px;
+           height: 200px;
+           background-color: aqua;
+       }
+       .caja-principal{
+           width: 400px;
+           height: 600px;
+           background-color: white;
+           text-align: center;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+       }
+       .caja2 h2{
+           color: firebrick;
+       }
+       
+       
+    </style>
+    <section>
+       <div class="caja-principal" id="cajaPrincipal" title="cajaGrande">
+           <h1>titulo1</h1>
+           <!--<h2></h2>-->
+
+           <div class="caja1"></div>
+           <br>
+           <div class="caja2">
+               <h2>titulo2</h2>
+               <h2>titulo3</h2>
+           </div>
+       
+       </div>
+       
+        <script>
+        function escribir(x){
+            document.write(x+"<br><br>");
+        }
+            function log(x){
+            console.log(x);
+        }
+            
+            
+            //var cualquiera= document.querySelector("div");//selecciona lo que sea, sean etiquetas, id, clases, pero solo al primero que encuentre
+            
+            //cualquiera.style.backgroundColor= "red";//aqui solo cambiariaal primer div que encontro que es caja-principal
+            /*var cualquiera= document.querySelector(".caja1");
+            var cajaPrincipal= document.querySelector("#cajaPrincipal");
+            cualquiera.style.backgroundColor= "green";
+            cajaPrincipal.style.backgroundColor="aqua";*/
+            
+            var h2= document.querySelector(".caja2 h2");//se puede seguir las jerarquias como en css
+            h2.style.color="yellow";
+            
+            var divs= document.querySelectorAll("div");//el querySelectorAll, es como el getElementsbytag o class, es decir retorna un array de lo que le especifiquemos como busquedad, aqui serian los 3 divs del documento
+            
+            divs[0].style.backgroundColor= "blue";//este es el primer div, es decir caja-principal
+            divs[1].style.backgroundColor= "pink";
+            
+            var div3= document.querySelectorAll("div")[2];//aqui solo le asigne a div3, el tercer div que se encotro que tiene la posicion 2 en el array del query
+            
+            div3.style.backgroundColor="#fff";
+            
+            var cajaGrande= document.querySelector("[title=cajaGrande]");//tambien puede seleccionar con los selectores de css, aqui por atributo de etiqueta
+            
+            cajaGrande.style.border="10px solid black";
+            
+            var cajas= document.querySelectorAll("[class^=caja],h2");//podemos buscar varios parametros, van en orden, primero busca el primer selector, y despues los que siguen aqui que serian los h2, pero si por ejemplo yo pusiera un h2 antes que caja1 y caja2, el iria primero es decir el array iria, caja-principal,h2,caja1....
+            cajas[0].style.backgroundColor= "blue";//caja-principal
+            cajas[1].style.backgroundColor= "yellow";//caja1
+            cajas[2].style.backgroundColor= "green";//caja2
+            cajas[3].style.fontSize="30px";//el h2 en caja2
+            cajas[3].style.color="white";
+    </script>
+    </section>
+    
+</body>
+</html>

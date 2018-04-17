@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background: aqua;
+            margin-bottom: 10px;
+        }
+    </style>
+    <section>
+        <script>
+        function escribir(x){
+            document.write(x+"<br><br>");
+        }
+        function log(x){
+            console.log(x);
+        }
+            
+            
+            /*function Persona(){//para diferenciarlas a simple vista de las funciones las clases las comenzamos con mayusculas
+                
+            }
+            
+            var alexis= function(){//esto es una funcion llamada alexis, no es una instanciacion como abajo con johan
+                
+            }
+            //function alexis(){} esto es tal cual lo de la variable alexis, son solo funciones
+            
+            
+            var johan= new Persona();//las clases en js se crean con funciones, no hay una palabra reservada como class que usan otros lenguajes
+            //hay algo que no me quedo claro, pero al parecer el prototipo de una clase, son sus instancias, es decir cuando se crea una instancia como johan, esta recibe un prototipo de la clase, no a la clase en si, es decir hara uso de muchas cosas, pero no de todas*/
+            
+            /*function Persona(){//todo lo que esta dentro de una clase es llamado su constructor, es decir, todas sus propiedades y metodos
+                this.nombre="alexis";//las propiedades publicas tienen en la clase un valor por defecto por asi decirlo, y se usa la palabra reservada this, que hace referencia a que las intancias pueden tener un valor distinto de la clase o de las demas instancias
+                this.edad="";//tambien pueden estar vacios
+            }
+            
+            Persona.NOMBRE="JOHAN";//propiedad estatica solo la usa la clase, sus instancias no pueden usarla
+            
+            escribir(Persona.NOMBRE);
+            
+             var johan= new Persona();
+                
+            escribir(johan.nombre);
+            
+            johan.nombre= "johan";//las intancias pueden cambiar el valor de las propiedades de la clase, pero solo es para esta instancia 
+            escribir("este es el nuevo nombre en la instancia johan: "+johan.nombre);//aqui es johan
+            
+            var alexis= new Persona();
+            escribir(alexis.nombre);//pero aqui es alexis, ya que esta instancia no ha cambiado el valor por defecto de nombre en la clase*/
+            
+            function Persona(nombre,edad){// estas variables en los parentesis, seran las propiedades de cada instancia de persona que se envia por el constructor cuando uno crea las intancias
+                this.nombre= nombre;//las propiedades aqui especificadas serian la otra parte del constructor, es como una plantilla para las instancias
+                this.edad= edad;
+                
+                var pais="colombia"; //propiedad privada, solo se usan aqui dentro de la clase, son como variables locales
+                
+                this.p=pais;//pero una propiedad publica, puede tener asignado una propiedad privada
+                
+                var numero= 5;
+                var texto= "hola";
+                
+                this.caja=27;//si se crea la propiedad publica dentro de la clase, js tomara como prioridad este valor, por encima de cualquier declaracion hecha con la propiedad prototype, es decir caja valdra 27, no 23 como abajo
+                
+                this.getNumero= function(){//las funciones publicas getters se crean asi, colocando get al principio seguido del nombre de la propiedad privada a obtener, lo mismo para los setters
+                    return numero;
+                }
+                this.setNumero= function(nuevoNumero){
+                    numero= nuevoNumero;
+                }
+                
+                this.getTexto= function(){
+                    return texto;
+                }
+                this.setTexto= function(nuevoT){
+                    texto= nuevoT;
+                }
+                
+                
+            }
+            
+            Persona.prototype.cualquierPropiedad="loco";//tambien se pueden crear propiedades publicas mediante este metodo
+            
+            
+            
+            var johan= new Persona("johan",26);//estos parentesis son una parte del metodo constructor, por aqui enviaremos los valores para las propiedades publicas de cada instancia
+            
+            
+            escribir(johan.cualquierPropiedad);
+            
+            var alexis= new Persona("alexis",25);
+            
+            escribir(johan.nombre);
+            escribir(alexis.edad);
+             escribir(johan.pais);//undefined, las intancias no pueden usar tampoco las propiedades privadas ni las estaticas
+             escribir(johan.p);
+            escribir("valor privado mediante una funcion publica priviligeada getter "+johan.getNumero());
+            johan.setNumero(26);
+            escribir(johan.getNumero());
+            escribir(johan.getTexto());
+            
+            johan.setTexto("caca");
+            escribir(johan.getTexto());
+            
+            
+            Persona.prototype.saludar= function(){//prototype es una propiedad publica que todos los objetos reciben, es decir Persona y todas las clases que creamos son en realidad tambien instancias de la clase generica object
+                escribir("hola prototype");
+            }
+            
+            var lolo= new Persona("lolo",24);
+            
+            lolo.saludar();
+            
+           Persona.prototype.caja= 23;
+            escribir(lolo.caja);//27, el this.caja tiene prioridad no es como las variables que se leen de arriba hacia abajo
+            
+            
+            String.prototype.cualquierNombre= function(){//tambien podemos agregar nueva propiedades y funciones publicas a clases predefinidas como los String
+                log("hola santo");
+            }
+            //var texto= new String("takatak"); version instancia
+            var texto= "takatak";//literal
+            
+            texto.cualquierNombre();//ahora cualquier variable tipo string puede usar cualquierNombre
+            
+            Function.prototype.cualquiervrga= function(nombre){
+                log("cualquiervrga tu: "+nombre);
+            }
+            
+            
+            function alaMrda(){
+                
+            }
+            
+            alaMrda.prototype.cualquiervrga("ramona");//todas las funciones son instancias de la clase Function, y si tambien podemos agregarle propiedades personalizadas
+            
+            Array.prototype.takataka= "chocolate";//los arrays tambien todooooooo
+            
+            var frutas= ["manzana"];
+            
+            escribir(frutas.takataka);
+            
+            
+            
+            
+            
+            
+    </script>
+    </section>
+    
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js</title>
+    <style>
+        
+        table{
+            margin:0 auto;
+            border-collapse: collapse;
+        }
+        th{
+            color: firebrick;
+        }
+        th,td{
+            border: 1px dashed black;
+            padding: 7px
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <h1>hello</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Mes</th>
+            </tr>
+        </thead>
+        <tbody>
+           <script>
+            
+            var meses= ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+               
+               
+               
+               var indice=0;//inicio esta en cero
+               while(indice<=(meses.length-1)){//el array tiene 12 posiciones del 0 al 11 meses.length=12 -1= 11, while es mientras se cumpla lo de adentro
+                   document.write("<tr>");//fila
+                        document.write("<td>"+(indice+1)+"</td>");//celda No
+                        document.write("<td>"+meses[indice]+"</td>");//celda Mes
+                           indice++;//comenzamos en 0 enero despues de esta linea indice valdra 1, y el array volvera a preguntar e iremos a 1 febrero y asi suscesivamente, cuando lleguemos a 12, al fin el while sera false, y no hara mas el codigo dentro de el
+                   document.write("</tr>");//cierro fila
+               }
+               
+               alert(indice);//llegamos a 12, el while termino
+               
+            do{
+               var num= prompt("escribe un numero del 1 al 20");
+               
+            }while(num<1 || num>20 || isNaN(num));// al menos una vez se ejecutara el codigo de antes del while, si se cumple la condicion se sale del ciclo, tambien se puede salir si no se evalua la codicion, por ejemplo si no evaluara si es un not a number, es decir si me colocaba letras y no lo evaluaba, daba false en el while, y se salia de el, como un fallo o algo asi, hay que se especifico con este
+            
+            </script>
+           
+            
+        </tbody>
+    </table>
+    
+    
+    
+    <script src="js/codigo.js"></script>
+</body>
+</html>

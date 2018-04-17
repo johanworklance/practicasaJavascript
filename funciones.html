@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>funciones</title>
+</head>
+<body>
+   
+   <section>
+       <h1>cambiador de tamaños</h1>
+       
+       <a href="#" id="tamano14">14</a>
+       <a href="#" id="tamano18">18</a>
+       <a href="#" id="tamano24">24</a>
+       
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad quam, repudiandae facilis accusantium, perferendis suscipit blanditiis? Error laudantium quod iusto corporis, eaque eos, hic est, laborum quae velit mollitia dolorem.</p>
+   </section>
+   
+    
+    <script>
+    /*var saludo= function(nombre){//declarando una funcion con el var, recibimos un parametro nombre y lo usamos en el alert, este nombre automaticamente es una una variable, como en el for, es decir que este ahi es como si fuera var nombre;
+        alert("hola "+nombre);
+    }
+    */
+    
+    //saludo("johan");//llamo a la funcion y el paso el valor del parametro
+    
+   /* function suma(num1,num2){//otra forma de crear funciones, de esta manera aseguramos que js busque esta funcion y ejecute sus llamadas, asi estas esten antes en el codigo, de la otra forma solo vera una variable y no una funcion, es decir que las llamadas de esa manera deben estar por debajo de ella en el codigo
+        alert(num1+num2);
+    }
+    
+    
+    suma(7,15);*/
+    
+    
+    /*function suma(){
+        var suma=0;
+        //var arg= arguments;tambien sirve asi
+        
+        for(i=0;i<arguments.length;i++){//en js, hay un array especial llamado arguments, permite que una funcion reciba muchos parametros de las llamadas, sin que las especifiquemos en los parentesis de las funciones
+            suma+=arguments[i];//0+3,3+5,8+66 y asi sucesivamente
+            document.write(suma+"<br>");
+        }
+        document.write(suma+"<br>");
+    }
+    
+        suma(3,5,66,66,33,45,99);
+        suma(1,1,1);
+        suma(2,3,3,4);//no importa si las llamadas varian de parametros, arguments es nuevo para cada llamada*/
+    
+    
+    /*function calcularIva(valor){//recuerda que en los parentesis a parte de recibir, tambien se pueden declarar variables
+        
+        valor= prompt("ingresa el valor a calcular");
+        var total= valor*0.19;//las variables en funciones son locales, es decir solo se usan aqui en la funcion
+        return "el iva de "+valor+" es de "+total;//se pueden devolver valores y usarlos
+    }
+    
+        
+        
+    //document.write(calcularIva(150000));//es algo asi a como que esa llamada tiene un valor de 28500, es como si el return total, asignara un valor a esa llamada calcularIva(150000) y la usamo en el document.write
+        
+        
+        document.write(calcularIva());//el mismo ejemplo pero no enviamos parametros ya que la misma funcion usa un prompt ahora y cambie el return*/
+    
+    
+    /*function(){//funcion anonima, sin nombre, no funciona por si sola, y no la podemos llamar, pero si la asignaramos a una variable, si que podriamos, es como la otra forma de crear variables
+        alert("hola mundo");
+    }
+    
+    var hola= function(){
+        alert("hola mundo");
+    }
+    
+    hola();*/
+        
+    /*(function(){
+        alert("hola mundo");
+    })();//funcion autoejecutable, la encerramos en parentesis y luego colocamos otros () vacios
+        
+        (function(num1,num2){
+            alert(num1+num2);
+        })(5,7);//al ser auto, los parametros los colocamos en esos () finales, es como su llamada
+        
+        var x=1;
+        var y=2;
+        (function(){
+            var x=3;//estas x y y no son las mismas de fuera de la funcion anonima
+            var y=4;
+            
+            function suma(){//por cierto esta suma seria un clousure, es decir una funcion dentro de otra funcion
+                return x+y;//suma las puede usar, por que son variables globales dentro de esta funcion anonima,
+            }
+            
+            alert(suma());//aqui 7
+        })();//funciones utiles para probar codigo ajeno
+        
+        
+        
+        
+        alert(x+y);//y aqui 3*/
+        
+       /* function padreClousure(){
+            
+            var saludar= function(){//funcion clousure
+                var hola="hola mundo";
+                document.write(hola);
+                
+            }
+            return saludar();//debo llamarla aqui, afuera de la funcion padre es como si no existiese
+        }
+        padreClousure();//solo mediante la funcion padre podemos hacer uso de sus funciones clousure
+        
+        
+        
+        
+        
+        
+        
+ 
+        function operacion(){//funcion padre
+            
+            var valor=0;
+            var incrementar= function(){
+                
+                return valor+=5;
+            }
+            return incrementar;//aqui estoy enviando es la function en si, no un llamado, es decir esto no vale 5, si no que vale la function entera es decir su codigo, si pusiera () si seria un llamado
+            
+        }
+        
+        
+        var ejecutar= operacion();// la cosa es que si el llamado de operacion retorna el codigo de la funcion incrementar, practicamente estamos declarando una funcion con el nombre ejecutar, es decir, si return incrementar es igual al funcion(){ return valor+=5}, es como si crearamos una nueva funcion llamada ejecutar
+        
+        console.log(ejecutar());//5
+        console.log(ejecutar());//10
+        console.log(ejecutar());//15
+        
+        
+        
+        var valor2=0;
+        
+        function operacionconvariableglobal(){
+            return valor2+=5;
+        }
+        
+        console.log(operacionconvariableglobal());//5
+        console.log(operacionconvariableglobal());//10
+        console.log(operacionconvariableglobal());//20
+        
+        
+        function log(n){
+            console.log(n);
+        }
+        function escribir(n){
+            document.write(n+"<br>");
+        }
+        
+        
+        log("mamahuevo gilbert");
+        escribir("chupamelo no explicaste bien los clousures");
+        
+        function crearSumador(n){//recordar que n en ese parentesis, es como si tambien fuera un var n;
+            return function(m){// por eso cuando llamamos a suma10 o suma20, pueden hacer uso de n tambien
+                return n+m;
+            }
+        }
+        var suma10= crearSumador(10);//estos 10 y 20 los guardamos en la variable n que tiene como parametro creaSumador
+        var suma20= crearSumador(20);
+        
+        log(suma10(10));/////looooooooll entendi, cuando decimos que suma10 y suma20 son iguales a lo que retorne crearSumador(n) las volvemos 2 funciones, y de paso al mismo tiempo le pasamo el parametro n que tiene crearSumador, asi la guardara y cuando llamemos a suma10 o suma20, y a estos que ahora son funciones le pasamos el parametro m, nos sumara n+m y guala, mi cerebro derretido
+        log(suma20(5));*/
+        
+        
+        var p= document.getElementsByTagName("p")[0];
+        
+        function cambiador(pixeles){
+              return function(){
+                  p.style.fontSize=pixeles+"px";
+              }
+        }
+        var tamano14= cambiador(14);//los closures en si sirven para hacer uso de variables entorno a su contexto, es decir que sus padres guarden variables que puedan usar ellas de forma personal, y no una global del documento, por que fijate pixesles en tamano14 es 14, en 18 18, y en 24 24, no podria declarar la misma variable, pero con distintos valores en el archivo js en si, es como si fueran instancias de la variable pixeles
+        var tamano18= cambiador(18);
+        var tamano24= cambiador(24);
+        
+        
+        
+        
+        document.getElementById("tamano14").onclick= function(){
+            p.style.fontSize=14+"px";//la cosa es que los eventos se igualan a funciones, por lo que aqui pues cree una funcion anonima que cambia la fuente a 14px del parrafo, pero podria haber usado a tamano14, que en si es el mismo codigo de esta funcion anonima, pero el ya tiene guardada 14 en la variable pixeles de su function padre
+        }
+        document.getElementById("tamano18").onclick= tamano18;//aqui si use la function mas no la llame, ya que los eventos necesitan es un codigo de funcion no una llamada
+        document.getElementById("tamano24").onclick= tamano24;
+        
+        
+        
+        
+    </script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background: aqua;
+            margin-bottom: 10px;
+        }
+    </style>
+    <section>
+       <form action="">
+           <input type="email" id="texto" placeholder="ingresa un texto"><!--por ejemplo le html al colocar este input de tipo texto ya esta indicando un formato con @ y demas-->
+           <span id="span"></span>
+           <br>
+           <button type="submit">enviar</button>
+           
+       </form>
+       
+       
+       
+        <script>
+        function escribir(x){
+            document.write(x+"<br><br>");
+        }
+            function log(x){
+            console.log(x);
+        }
+            
+            /*expresion regular, es un formato que un string debe cumplir, son caseSensitive
+            
+            var er= RegExp("[^a]");//un patro de expresion regular, pero esta la forma con el constructor de la clase RegExp
+            
+            var er2= /(opcion1)/;/*de forma literal*/
+            
+            
+            //expresiones regulares de sustitucion
+            
+            //var frase= "Esto es una cadena de prueba";
+            //var er=/Esto/; tambien puede ser una palabra en si
+            //var er=/Est./;//el punto indica que puede ir cualquier caracter despues de Est
+            
+            //var resultado= er.test(frase);//el metodo test comprueba si en el string que le pasamos, exista un patron como el de la expresion regular, es decir que haya un Est. y cualquier otra letra seguida de la t, si encuentra nos retorna true
+            //escribir(resultado);//true
+            
+            //----------------------------------------------
+            //var frase= "profesora, alumno";//no tenemos alumnos o alumnas
+            //var er=/alumn[ao]s/;//los [] en ellos indicamos los caracteres que deben aparecer justo despues de alumn, para enviar true, es decir una (a) o una (o)
+            //var resultado= er.test(frase);
+            // escribir(resultado);  //false
+            //var er=/alumn[a-o]s/;//buscara el rango de letras entre la a y la o, igual pa numeros 0-9 y asi
+            //var er=/alumn[a-fopz]s/;este especial, primero buscara entre la a-f, si no encuentra, buscara por individual las siguientes, es decir  que alla letra o,p o la z
+            //var er=/alumn[A-Z]s/;solo mayus
+            //var er=/alumn[A-Za-z0-957-]s/; el caracter puede ser mayus, minus,  numeros del 0 al 9, o el 5, o el 7, o un - guion
+            //----------------------------------------------  
+            
+            
+            //----------------------------------------------  
+            /*var frase= "profesora, alumnos";
+            var er=/alumn(as|os)/;//con parentesis separamos las opciones con un |
+            var resultado= er.test(frase);
+             escribir(resultado);  //true*/
+            //---------------------------------------------- 
+            
+            
+            //expresiones regulares de cantidad
+            
+            //var frase= "profesora, alumnos";
+            //var er=/alumn(as|os)*/;//(as|os)= una pequeña expresion que con ese * adelante indica que dara true, si (aparecen,no aparecen, o se repiten)....siempre dara true no?
+            //var resultado= er.test(frase);
+             //escribir(resultado);  //true
+            //var er2=/alumn(as*|os*)/;//esta es complicada, el asterisco dentro de las opciones indica que, la s detras de el * puede(estar, no estar, repetirse), asi nos dara true si, hay alumna, alumnas, alumno, alumnos
+            
+            //var resultado2= er2.test(frase);
+             //escribir(resultado2);
+            
+            //0-9 rango
+            //abcd opciones distintas es como un a,b,c,d
+            //(abc|def) abc,def
+            //(ab*|cd) a,b |cd  el * delante de la b, hace que se separe de la a
+            
+            //var frase= "profesora, alumnosssssssss del colegio";
+            //var er=/alumn[ao]s* del colegio/;//que indica el * que puede (estar, no estar, repetirse) el caracter (s), por cierto los espacios tambien son caracteres por lo de " del colegio"
+            //var resultado= er.test(frase);
+             //escribir(resultado);  //true
+            
+            //----------------------------------------------
+            /*var frase= "profesora, alumnosssssssss del colegio";
+            var er=/alumn[ao]s? del colegio/;//el signo ? es como el * pero (puede estar, no estar, pero no repetirse)
+            var resultado= er.test(frase);
+             escribir(resultado);  //false*/
+            //----------------------------------------------
+            
+            
+            //----------------------------------------------
+            /*var frase= "profesora, alumnosssssssss del colegio";
+            var er=/alumn[ao]s+ del colegio/;//el signo + delante de la s indica(puede estar como minimo 1 vez, puede repetirse), si no esta dara false
+            var resultado= er.test(frase);
+             escribir(resultado);  //true*/
+            //----------------------------------------------
+            
+            
+            //----------------------------------------------
+            /*var frase= "profesora, alumnosss del colegio";
+            var er=/alumn[ao]s{3} del colegio/;//las llaves {} indican el numero de veces que  s puede repetirse, si hay mas de lo indicado mandara false
+            var resultado= er.test(frase);
+             escribir(resultado);  //true
+            
+            var frase= "profesora, alumnosssssssss del colegio";
+            var er=/alumn[ao]s{3,15} del colegio/;//es como el anterior, pero {minimo,maximo} de veces que se necesita repetir la s para ser true,  aqui indico al menos 3, pero no mas de 15 veces
+            var resultado= er.test(frase);
+             escribir(resultado);  //true
+            
+            
+            var er=/alumn[ao]s{3,} del colegio/;//minimo 3 veces, y puede repetirse infinitamente {3,nada}*/
+            //----------------------------------------------
+            
+            
+            
+            
+            //ATAJOS
+            
+           // \w = cualquier caracter alfanumerico es como el punto . [a-zA-Z0-9_] estos son sus parametros, menos los caractares especiales como &
+            //var er=/alumn[ao]\w del colegio/;
+            
+            // \d= solo numeros [0-9]
+            //var frase= "profesora, alumno123 del colegio";
+            //var er=/alumn[ao]\d{3} del colegio/; numero de veces que puede haber numeros, mandara true por que alumno tiene 123, 3 numeros
+            
+            // \s= cualquier espacio (barra espaciadora, tab, enter)
+            //var frase= "profesora, alumno del colegio";
+            //var er=/alumn[ao]\s del colegio/;//mandara false, por que alumno no tiene un espacio delante, es decir debe ser (alumno  del), pero hay es (alumno del), la expresion regular indica un espacio de mas al lado de alumno (/alumn[ao]\s del), el espacio detras de (del) si o si debe ir, y  ya que la frase solo tiene un espacio entre alumno y del, quiere decir que no hay un \s(espacio), es decir deberian haber 2 espacios, uno del \s, y el otro que ya se pide en la expresion
+            
+            // \b= cualquier delimitador de palabras (.,()"), putos comas parentesis comillas, un espacio
+            //var frase= "profesora, alumno del.colegio";
+            //var er=/\balumn[ao]\s del\b/;//mandara true, hay un espacio detras de alumno, y un punto delante de del
+            
+            // \W \D \S \B son las versiones negadas de las anteriores es decir, si por ejemplo hay un \w [a-zA-Z0-9_] dara true, pero si colocamos \W mandara false
+            
+            //DELIMITADORES ^ y $
+            
+            /*var frase= "alumno del.colegio";
+            var er=/^alumn[ao] del/;//si o si la frase debe comenzar con lo que tenga delante el ^
+            var resultado= er.test(frase);// true la frase comienza con(alumn[ao] del)
+             escribir(resultado);  */
+            
+            /*var frase= "alumno del.colegio";
+            var er=/colegio$/;//si o si la frase debe terminar con lo que tenga atras del $
+            var resultado= er.test(frase);// true la frase termina con(colegio)
+             escribir(resultado);*/
+            
+            
+            
+            
+            
+            
+            
+            //EXPRESIONES DE NO CAPTURA
+            
+            /*var frase= "alumnos del.colegio";//(?:opc1|opc2) son como los otros pero lo que encuentran no lo guardan en una variable, los anteriores al parecer si, ellos lo hacen para despues usar unos metodos, los de no captura no guardan para consumir memoria
+            var er=/alumn(?:as|os)/;
+            var resultado= er.test(frase);
+             escribir(resultado);
+            */
+            
+            /*var frase= "alumn os del.colegio";//cadena1(?=cadena2) , dara true, si delante de cadena1 hay cadena 2
+            var er=/alumn(?= os)/;
+            var resultado= er.test(frase);//true despues de alumn hay ( os);
+             escribir(resultado);*/
+            
+             /*var frase= "alumn os del.colegio";//cadena1(?!cadena2) , dara true, si delante de cadena1 no hay cadena 2, es el NEGADO de la anterior
+            var er=/alumn(?! os|as)/;
+            var resultado= er.test(frase);//false despues de alumn hay ( os);
+             escribir(resultado);*/
+            
+            
+            /*var frase= "alumno del.colegio";//los [^] con el ^ dentro y adelante de los cracteres niegan, es decir no deben estar esos caracteres
+            var er=/alumn[^ao]/;
+            var resultado= er.test(frase);//false despues de alumn hay (o);
+             escribir(resultado);*/
+            
+            
+            /*var frase= "alumn";//^()$ que no haya ningun espacio ni nada al inicio ni al final
+            var er=/^(alumn)$/;
+            var resultado= er.test(frase);
+             escribir(resultado);*/
+            
+            
+            
+            
+            
+            //MODIFICADORES
+            
+            /*var frase= "alumno, alumna, AluMNos, aluMNaS, profesor, colegio";
+            var er= /alumnos/i;//el modificador i, hace que la expresion no sea casesensitive, es decir acepta minusculas y mayusculas, pro cierto los modificadores van despues del ultimo /, y en cualquier orden
+             var resultado= er.test(frase);//true, hay AluMNos
+             escribir(resultado);*/
+            
+            /*var frase= "alumno, alumna, AluMNos, aluMNaS, profesor, colegio\n chocolate, arroz, pikachu\n locos,locas";
+            var er= /^alumnos$/m;//el modificador m junto con los ^$, hara la busquedad linea por linea, es decir un string separado por \n
+             var resultado= er.test(frase);//false, pero no se por que supongo que debe estar lo buscado en cada linea, no se en verdad
+             escribir(resultado);*/
+            
+            
+            //METODOS
+            
+            //el test(), nos devuelve true o false, pero el encuentra el primer resultado en la cadena y se detiene no sigue buscando mas coincidencias, si colocamos el modificador (g) si que buscaria mas, pero da igual por que el solo nos devuelve un valor booleano
+            
+            
+            //el match(), nos devuelve es un array, y junto con el modificador (g de global), llenara el array con cada coincidencia que encuentre, si no esta el g, solo guarda un valor
+            
+            //el exec(), nos devuelve un string, y es como el test, se detienen en el primer valor encontrado, a menos que especifiquemos el modificador g, lo que hara que nos muestre el ultimo valor que encuentre
+            
+            //var er= new RegExp("alumno","ig"); en modo constructor podemos enviar los modificadores en el segundo parametro, aqui es i y g en cualquier orden
+            
+            
+            /*var frase= "alumno, alumna, AluMNos, aluMNaS, profesor, colegio";
+            var er= /alumn(os?|as?)/g;//que despues de alumn haya la os y as, o que pueda faltar la s
+             var resultado= er.test(frase);
+            var resultado2= er.exec(frase);//encuentra alumna, y en el string que nos da nos indica alumna,a es decir por cual condicion la encontro, encontro alumna por que cuando esta el modificador g, el nos muestra el ultimo valor, no el primero
+            var resultado3= frase.match(er);//retorna un array con alumno y alumna, por cierto es un metodo de los string que usa como parametro una expresion regular
+             escribir(resultado);//true
+            escribir(resultado2);//alumna,a
+            escribir(resultado3);//alumno,alumna
+            escribir(resultado3[0]);//alumno*/
+            
+            
+            
+            
+            
+            //formulario
+            
+            
+            var boton= document.getElementById("boton");
+            var span= document.getElementById("span");
+            var texto= document.getElementById("texto");
+            
+            texto.addEventListener("keyup",validar);//cuando dejemos de teclear
+            
+            //var er= /[3-7]/;//solo aceptara numeros del 3 al 7
+           // var er= /[a-z]{5,10}/i;//letras min5 max 10, y no importa si vienen mayus o minusculas
+            
+            var er= /(?=^.{10,15}$)(?=.*@)(?=.*#)(?=.*%)(?=.*!)(?=.*[A-Z])(?=.*[a-z])/;//aqui es que ?= nos indicara que el caracter debe aparecer en lo que le pongamos al input o justo despues, el (.)que puede haber cualquier cosa antes del caracter especial a evaluar,el(*)que puede haber o no algo antes del caracter especial, y los parentesis, bueno es como varias condiciones, una para cada caracter especial @#%!, pero recordar las 7mcondiciones deben darse para que nos de true, es decir, deben estar en el texto los 4 caracteres Y AL MENOS una mayuscula y minuscula
+            //ademas de que al principio y final de la cadena deben haber minimo 10 caracteres y maximo 15 la cosa es el ^ indica que al principio habran de 10 a 15 caracteres con el . indicamos lo que sea y el $ indica que al final deben haber ese mismo numero de caracteres, es decir los 2 juntos ^$ sirven para validar el tamaño entero de lo que introduscamos en el input
+            
+            
+            //cada condicion encerrada en parentesis, es como si fueran varias expresiones regulares en una sola, parecido a un array
+            
+            function validar(){
+                var resultado= er.test(texto.value);//evaluara lo que coloquemos en el input
+                if(resultado){
+                    span.innerHTML="esta todo perfecto";
+                }else{
+                    span.innerHTML="por favor ingresa uno de estos caracteres especiales  '@#%!' ";
+                }
+            }
+            
+            
+            
+            
+            
+            
+    </script>
+    </section>
+    
+</body>
+</html>

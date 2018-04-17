@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background: aqua;
+            margin-bottom: 10px;
+        }
+    </style>
+    <section>
+       <button id="boton">click</button>
+        <script>
+        function escribir(x){
+            document.write(x+"<br><br>");
+        }
+            function log(x){
+            console.log(x);
+        }
+            var boton= document.getElementById("boton");
+            boton.addEventListener("click",ejecuta)
+            function ejecuta(){
+                try{//intenta el codigo de adentro
+                    
+                    //throw "cualquier error"; si lo colocaramos aqui, pasaria de todo lo de abajo y se iria al catch, por lo que es recomendable usar throw en una codicional
+                    var num1= parseInt(prompt( "ingresa el primer numero"));
+                    var num2= parseInt(prompt( "ingresa el segundo numero"));
+                    
+                    if(isNaN(num1) || isNaN(num2)){//si no son numeros
+                        throw "no has ingresado un numero valido";//generamos el error, si llegamos a este punto, el catch detectara el error, y no seguira el codigo de abajo, es decir hasta que no deje de salir el error, no podremos seguir....
+                    }
+                    
+                    alert("que bueno pusiste numeros");//aqui
+                    
+                    
+                }catch(error){//y el catch guarda  el throw en la variable error, si no colocaramos algun throw, catch no hara nada
+                    alert("ERROR: "+error);
+                }finally{
+                    alert("soy opcional, y ejecutare mi codigo, haya o no errores");
+                }
+            }
+            
+            
+    </script>
+    </section>
+    
+</body>
+</html>

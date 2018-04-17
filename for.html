@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for</title>
+    
+    <style>
+        body{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        table{
+            border: 1px solid black;
+            padding: 20px;
+            background: aquamarine;
+            margin: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <script>
+    /*//muestrame los numeros del 1 al 10
+    for(var i=1;i<=10;i++){//expresion inicial: se pueden declarar variables nuevas alli y usarlas en todo el script, la expresion condicion:, si se llegara a omitir marcaria como si fuera true de todas maneras y realizaria el codigo dentro del for, y la expresion final :es donde indicamos como cambiara la expresion inicial cada que se itere en el for, el for sirve para repetir codigo pero nosotro definimos cuantas veces iterara, no como loswhiles que son indefinidos o el do while que al menos una vez lo hara
+        document.write(i+"<br>");
+        
+    }
+        document.write(i+"<br>");//cuando la i valio 10 y itero una vez mas en el for, cambio a 11 y se salio del for
+        document.write("<hr>");
+    for(var i=1;i<=10;i+=2){//de 2 en 2
+        document.write(i+"<br>");
+        
+    }
+        document.write(i+"<br>");
+        
+        for(var i=100;i>=10;i-=10){//de 10 en 10, decrementanto
+        document.write(i+"<br>");
+        
+    }
+        document.write(i+"<br>");//valio madres digo 0*/
+        
+        
+        
+        
+    </script>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>operacion</th>
+                <th>resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <script>
+                
+                //var n= prompt("ingresa el numero, del que quieras ver su tabla de multi");
+                var n=12;
+                for(var i =0;i<=12;i++){
+                    
+                    document.write("<tr>");//recordar las tablas tienen fila
+                    
+                    document.write("<th>");
+                    document.write(n+" x "+i+" = ");//y estas son sus celdas
+                    document.write("</th>");
+                    
+                    document.write("<th>");
+                    document.write(n*i);//y estas son sus celdas
+                    document.write("</th>");
+                    
+                    
+                    document.write("</tr>");//aqui cierro las fila, document.write es magia
+                    
+                }//lol lo hice sin ver el curso efecto dipper-kruger bro, ves con el for repeti 13 veces ese codigo, sin escribirlo yo, lo hice la pc
+                var noMostrar= document.getElementsByTagName("table")[0];
+                noMostrar.style.display="none";
+            
+            </script>
+        </tbody>
+    </table>
+    
+    <script>
+        var x= prompt("desde que numero quieres las tablas de multi");
+        var y= prompt("hasta que numero finalizara");
+        
+    if(!isNaN(x) && !isNaN(y)){
+        
+        for(x;x<=y;x++){//for principal
+            document.write("<table>");
+
+            document.write("<caption>tabla del "+x+"</caption>");
+            
+            document.write("<thead><tr><th>operacion = </th><th>resultado</th></tr></thead>");
+
+            document.write("<tbody>");
+
+                for(var i =0;i<=12;i++){//for anidado
+
+                            document.write("<tr>");//recordar las tablas tienen fila
+
+                            document.write("<th>");
+                            document.write(x+" x "+i+" = ");//y estas son sus celdas
+                            document.write("</th>");
+
+                            document.write("<th>");
+                            document.write(x*i);//y estas son sus celdas
+                            document.write("</th>");
+
+
+                            document.write("</tr>");
+                }
+
+            document.write("</tbody>");
+
+            document.write("</table>");
+        }//madre mia lo hice
+    }else{
+        alert("no colocaste numeros");
+    }
+    </script>
+    
+    
+    
+</body>
+</html>

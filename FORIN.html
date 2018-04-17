@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background: aqua;
+            margin-bottom: 10px;
+        }
+    </style>
+    <section>
+        <script>
+        function escribir(x){
+            document.write(x+"<br><br>");
+        }
+            
+            var miObjeto= {
+                nombre:"johan",
+                edad:25,
+                colorPelo:"negro",
+                estatura:1.73,
+                otroObjeto:{
+                    clave1: "valor1",
+                    clave2: "valor2"
+                }
+            };
+            
+            var miArray= [5,7,15,"carro","avion"];
+            
+            for(i=0;i<miArray.length;i++){
+                escribir(miArray[i]);
+            }
+            
+            escribir("---------------------");
+            
+            for(var x in miArray){//el var se puede omitir, x recorrera el array, es un for especialmente para arrays, y objetos
+                escribir(miArray[x]);
+            }
+            escribir("---------------------");
+            
+            for(i in miObjeto){
+                escribir(i);//aqui muestro es el nombre de la clave, ya que el objeto no tiene posiciones en numeros, es mas como un array con nombres asociativos, que es lo que esta almacenando la var i
+            }
+            escribir("---------------------");
+            for(i in miObjeto){
+                
+                if(typeof miObjeto[i]=="object"){//con typeof verificamos el tipo de dato que tenemos, y sabemos que otroObjeto es un object
+                    for(v in miObjeto[i]){//anidamos este for para recorrer a la clave otroObjeto que es bueno otro objeto
+                         escribir("el valor de "+v+" dentro de la clave '"+i+"' es: "+miObjeto[i][v]);}//la v es el nombre de la claves dentro de otroObjeto
+                }else{
+                    escribir("el valor de '"+i+"' es: "+miObjeto[i]);//los objetos literales pueden usar corchetes para mostras el valor de las claves
+                    }
+            }
+            
+    </script>
+    </section>
+    
+</body>
+</html>

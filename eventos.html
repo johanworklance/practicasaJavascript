@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eventos</title>
+</head>
+
+<style>
+    
+    body{
+        background-color: aqua;
+    }
+    section{
+        
+        width: 200px;
+        height:200px;
+        margin: 0 auto;
+        border: 1px solid black;
+        
+    }
+    
+    </style>
+<body onload="alert('ya he cargado la pagina')">
+   
+    <section  style="border: 2px solid black"onmouseover="resalta(this)" onmouseout="resalta(this)"></section><!--los eventos pueden ir dentro de la etiqueta como un atributo, para las funciones externas debemos usar el this, no como en en ejemplo del input que ya el navegador sobre entiende que se refiere a "este" elemento es esta section, por cierto un hover con js jaaa-->
+    
+    <button onclick="alert('diste click en el boton')" >click</button>
+    
+    <input type="text" onfocus="value='estoy focuseado'; style.backgroundColor='blue'" onblur="value='ya no estoy focuseado'; style.background='green'"><!-- aqui por alguna razon se coloca backgroundColor en vez de background-color como en css-->
+    
+    <button onclick="presioname()"id="presioname">presioname</button>
+    
+    <script>
+    
+        
+    
+       /* function presioname(){
+            
+            
+            alert("click click");
+        }*/
+        
+        function resalta(elemento){
+            switch(elemento.style.borderColor){
+                case "black":
+                case "black black black black"://internet explorers viejos, por cierto varios case asi, es como un or ||
+                case "#000000"://para los navegadores que lo trasnforman en hexadecimal
+                    elemento.style.borderColor= "white";
+                    elemento.style.backgroundColor="black";
+                break;
+                case "white":
+                    elemento.style.borderColor= "black";
+                    elemento.style.backgroundColor="white";
+                break;
+                    
+            }
+        }
+    </script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>window</title>
+</head>
+
+<style>
+    
+    section{
+        
+        border: 2px solid black;
+        
+        padding: 10px;
+        background: aqua;
+        margin-bottom: 10px;
+    }
+    #boton5{
+        /*position: fixed;*/
+    }
+    
+    </style>
+<body>
+  <script>//stop();//cierra el flujo de ejecucion
+    </script>
+  
+  
+   <section>
+      <button id="boton">abrir</button>
+       <button id="boton2">cerrar</button>
+      <button id="boton3">cambiar tamaño</button>
+       <button id="boton4">mover</button>
+       <button id="boton5">scroll</button>
+       <button id="boton6">ejecuta</button>
+       <button id="boton7">detiene</button>
+   </section>
+   
+   
+    <script>
+    function escribir(x){
+        document.write(x+"<br>");
+    }
+        
+        
+        var boton= document.getElementById("boton");
+        var boton2= document.getElementById("boton2");
+        var boton3= document.getElementById("boton3");
+        var boton4= document.getElementById("boton4");
+        var boton5= document.getElementById("boton5");
+        var boton6= document.getElementById("boton6");
+        var boton7= document.getElementById("boton7");
+       /* var c= confirm("quieres mostrar el mensaje?");//devuelve true si das aceptar, los metodos de window no necesitan el window., se sobreentiende que siempre estamos en una ventana
+        
+        if(c){
+            escribir("has mostrado el mensaje");
+        }else{
+            escribir("no quisiste mostrar");
+        }*/
+        
+        var ventana;
+        function abrirVentana(){
+            //ventana= open("http://google.com.ve","","width=200 height=300");
+            ventana= open("","ventanapopup","width=50, height=50");//abre paginas, segundo parametro lo de _blank y tal, si no ponemos y colocamos el tercer parametro, es un pop up, es como si ventana ahora fuera todo un DOM nuevo, tambien podemos darle nombre es decir atributo name en el segundo paramentro
+            ventana.document.write("<h1>hola soy nueva "+ventana.name+"</h1>");
+        }
+        
+        function cerrarVentana(){
+            ventana.close(); //cierra la pagina que se abrio open
+        }
+        
+        function cambiarTamano(){
+            //ventana.resizeTo(600,900);//cambia el tamaño de la ventana, en x y y
+            ventana.resizeBy(100,100);//lo mismo pero suma por cada click que damos
+            ventana.focus();//cada que demos a cambiar tamaño lo pondra en foco si esta oculta la pagina
+        }
+        function mover(){
+            //ventana.moveTo(100,100);
+            ventana.moveBy(100,100);//mueve las ventanas, en x y y, este suma cada que clickeas el otro no
+            ventana.focus();
+        }
+        
+        function scroll(){
+            
+            //window.scrollTo(100,100);
+            window.scrollBy(0,100);//para hacer scroll
+        }
+        
+        function alerta(){
+            alert("hola");
+        }
+        var t;
+        
+        function ejecuta(){
+            t= setTimeout(alerta,5000);//ejecuta una funcion despues de un delay que especifiquemos, 5000 milisegundos= 5s
+        }
+        
+       
+        
+        function detiene(){
+            clearTimeout(t);//sirve para detener el settimeout, para que no ocurra, como un interruptor
+            clearInterval(intervalo);//y este para detener al setInterval, pero solo funciona con variables
+        }
+        
+        var intervalo= setInterval(function(){//asi que a setinterval se lo asigne a una variable
+            document.getElementsByTagName("section")[1].innerHTML+="hola tio";
+        },3000);
+        
+        
+        boton.addEventListener("click",abrirVentana);
+        boton2.addEventListener("click",cerrarVentana);
+        boton3.addEventListener("click",cambiarTamano);
+        boton4.addEventListener("click",mover);
+        boton5.addEventListener("click",scroll);
+        boton6.addEventListener("click",ejecuta);
+        boton7.addEventListener("click",detiene);
+        
+    </script>
+    
+    <section>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti ducimus ipsum, eius itaque, velit accusamus facere amet voluptatem labore quam excepturi, blanditiis pariatur omnis recusandae laboriosam sit mollitia animi. Saepe?
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius minima at optio? Nobis aliquam tempora aliquid odit voluptatum nihil in sint accusamus illo architecto voluptates, dolorem pariatur commodi repellat cum.
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora quo ipsum, praesentium beatae, at corporis vero? Amet excepturi in, blanditiis nisi ducimus deleniti ad numquam pariatur, a est commodi similique.lorem
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam repellendus a provident modi, quos suscipit incidunt quaerat animi commodi ipsa assumenda ipsam. Enim, nesciunt sapiente ad beatae, quos eveniet asperiores.
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti ducimus ipsum, eius itaque, velit accusamus facere amet voluptatem labore quam excepturi, blanditiis pariatur omnis recusandae laboriosam sit mollitia animi. Saepe?
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius minima at optio? Nobis aliquam tempora aliquid odit voluptatum nihil in sint accusamus illo architecto voluptates, dolorem pariatur commodi repellat cum.
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora quo ipsum, praesentium beatae, at corporis vero? Amet excepturi in, blanditiis nisi ducimus deleniti ad numquam pariatur, a est commodi similique.lorem
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam repellendus a provident modi, quos suscipit incidunt quaerat animi commodi ipsa assumenda ipsam. Enim, nesciunt sapiente ad beatae, quos eveniet asperiores.
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti ducimus ipsum, eius itaque, velit accusamus facere amet voluptatem labore quam excepturi, blanditiis pariatur omnis recusandae laboriosam sit mollitia animi. Saepe?
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius minima at optio? Nobis aliquam tempora aliquid odit voluptatum nihil in sint accusamus illo architecto voluptates, dolorem pariatur commodi repellat cum.
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora quo ipsum, praesentium beatae, at corporis vero? Amet excepturi in, blanditiis nisi ducimus deleniti ad numquam pariatur, a est commodi similique.lorem
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam repellendus a provident modi, quos suscipit incidunt quaerat animi commodi ipsa assumenda ipsam. Enim, nesciunt sapiente ad beatae, quos eveniet asperiores.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti ducimus ipsum, eius itaque, velit accusamus facere amet voluptatem labore quam excepturi, blanditiis pariatur omnis recusandae laboriosam sit mollitia animi. Saepe?
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius minima at optio? Nobis aliquam tempora aliquid odit voluptatum nihil in sint accusamus illo architecto voluptates, dolorem pariatur commodi repellat cum.
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora quo ipsum, praesentium beatae, at corporis vero? Amet excepturi in, blanditiis nisi ducimus deleniti ad numquam pariatur, a est commodi similique.lorem
+        
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam repellendus a provident modi, quos suscipit incidunt quaerat animi commodi ipsa assumenda ipsam. Enim, nesciunt sapiente ad beatae, quos eveniet asperiores.
+        
+        
+        
+        
+    </section>
+    
+    
+</body>
+</html>

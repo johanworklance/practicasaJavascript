@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background: aqua;
+            margin-bottom: 10px;
+        }
+    </style>
+    <section>
+        <script>
+        function escribir(x){
+            document.write(x+"<br><br>");
+        }
+            function log(x){
+            console.log(x);
+        }
+            
+            //var CONSTANTE= 25; antes se usaban mayusculas para declarar variables "constantes"
+            
+            
+            var caja1= 25;//las variables cambian
+            
+            escribir(caja1);
+            
+            caja1= "texto";
+            
+            escribir(caja1);
+            
+            const caja2= 17;//las constantes se quedan siempre con el primer valor
+            
+            escribir(caja2);
+            
+            //caja2="cajas";//no sirve de nada ERROR
+            escribir(caja2);
+            
+            
+            (function(){
+                'use strict';
+                
+                /*let a=1;
+                let b=5;
+            
+                {let c=15;}//el let solo funciona en modo strictq que no permite variables locales, el let hace que una variable sea local en el ambito donde este, o variables privadas
+            
+            console.log(a,b,c);//no se pudo imprimir c, por que es una variable local dentro de esas llaves
+                
+                */
+                
+                
+                var x=5;
+                var z= "texto";
+                
+                for( let x=1; x !=false; x=false){//ahora x es local de este for
+                    let z=15;//igual z, 
+                }
+                
+                console.log(x,z);//por lo que el modo strict no usara esas versiones locales dentro del for de x y z, en cambio nos mostrara sus valores como variable globales dentro de esta funcion anonima
+                
+                for(x=1;x!=false; x=false){//estos no son x y z locales, son las primeramente declaradas con var
+                    z=15;
+                }
+                console.log(x,z);//aqui si son los nuevos valores, es decir, x ahora vale false por el for, y z=15
+                
+            })();
+            
+         
+            
+            
+    </script>
+    </section>
+    
+</body>
+</html>

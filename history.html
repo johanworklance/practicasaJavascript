@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<style>
+    
+    section{
+        
+        border: 2px solid black;
+        
+        padding: 10px;
+        background: aqua;
+        margin-bottom: 10px;
+    }
+    
+    
+    
+    </style>
+<body>
+  
+   <section>
+   
+   <h1>pagina1</h1>
+   
+    <button id="boton1" onclick="atras()">atras</button>
+    <button id="boton2" onclick="adelante()">adelante</button>
+    
+    <form action="">
+        <input id="valor" type="text" placeholder="ingresa un numero">
+        <button id="btn_ir" type="button">ir</button><!--si o si debe ser tipo button, si no no funciona, creo que es por estar dentro de un form-->
+    </form>
+    
+     <script>
+         
+         //history nos permite jugar con el historial del navegador, la cosa es que este es el primer archivo, history 2 y history3 son con las que trabajaremos
+        function escribir(x){
+            document.write(x+"<br>");
+        }
+        escribir("numero de paginas visitadas"+history.length);//numero de paginas visitadas
+         
+         function atras(){
+             history.back();//regresa una pagina anterior
+         }
+         function adelante(){
+             history.forward();//regresa una pagina posterior
+         }
+         var btn_ir= document.getElementById("btn_ir");
+         
+         function avanzarPaginas(){
+             var valor= document.getElementById("valor").value;//este es lo que ingresamos en el input, si coloco por ejemplo 1, 
+             function ir(num){
+                 history.go(num);//history avanzaria 1 pagina adelante, si colocara -1 iria hacia atras, es como los 2 metodos anteriores a la vez
+             }
+             ir(valor);
+             
+         }
+         btn_ir.addEventListener("click",avanzarPaginas);
+         
+         
+         
+         
+         
+    </script>
+      
+   </section>
+   
+   
+    
+    
+    
+    
+    
+</body>
+</html>

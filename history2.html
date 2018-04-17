@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<style>
+    
+    section{
+        
+        border: 2px solid black;
+        
+        padding: 10px;
+        background: aqua;
+        margin-bottom: 10px;
+    }
+    
+    
+    
+    </style>
+<body>
+  
+   <section>
+   
+   <h1>pagina2</h1>
+   
+    <button id="boton1" onclick="atras()">atras</button>
+    <button id="boton2" onclick="adelante()">adelante</button>
+    
+    <form action="">
+        <input id="valor" type="text" placeholder="ingresa un numero">
+        <button id="btn_ir" type="button">ir</button>
+    </form>
+    
+     <script>
+        function escribir(x){
+            document.write(x+"<br>");
+        }
+        escribir("numero de paginas visitadas"+history.length);
+         
+         function atras(){
+             history.back();
+         }
+         function adelante(){
+             history.forward();
+         }
+         var btn_ir= document.getElementById("btn_ir");
+         
+         function avanzarPaginas(){
+             var valor= document.getElementById("valor").value;
+             function ir(num){
+                 history.go(num);
+             }
+             ir(valor);
+             
+         }
+         btn_ir.addEventListener("click",avanzarPaginas);
+         
+         
+         
+         
+         
+    </script>
+      
+   </section>
+   
+   
+    
+    
+    
+    
+    
+</body>
+</html>

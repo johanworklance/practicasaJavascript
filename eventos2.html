@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eventos</title>
+</head>
+
+<style>
+    
+    body{
+        background-color: aqua;
+    }
+    section{
+        
+        width: 200px;
+        height:200px;
+        margin: 0 auto;
+        border: 1px solid black;
+        
+    }
+    
+</style>
+<body >
+   
+    <section id="mouse">
+        
+        <button id="presioname">Presioname</button><!--evento semantico-->
+        <button onclick="mostrarMensaje()">taktak</button><!--manejador de eventos con funciones externas-->
+    </section>
+    
+    <script>
+    
+        function mostrarMensaje(){
+            alert("click click click");
+        }
+        
+        function entrar(){
+            alert("entrar");
+        }
+        
+        function salir(){
+            alert("salir");
+        }
+        
+        window.onload = function(){// a la ventana o mayor objeto del dom, su evento onload le asignamos una funcion anonima, asi cuando deverdad la pagina este completamente cargada, ahi usaremos los demas elementos del dom, es decir las etiquetas
+            
+            alert("ya cargue");
+        
+                document.getElementById("presioname").onclick= mostrarMensaje;// esto es como si hubieramos puesto en la etiqueta onclick="mostrarMensaje()", pero aqui no es llamada si no la function en si, es decir onclick tiene el codigo de la function, esto es un manejador de evento semantico, es decir usar ids, y asignar la funcion al evento deseado
+
+                var mouse= document.getElementById("mouse");
+
+                mouse.onmouseover= entrar;//recordar no hacer llamada () lo que hace es que asignemos el codigo de la funcion, es decir ese evento tieene el codigo de la funcion entrar, es parecido a lo que hicimos con la funcion anonima del window de arriba
+                mouse.onmouseout= salir;
+            
+            }
+        
+    </script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            margin-top: 100px;
+            background: aquamarine;
+            
+        }
+        
+        section{
+            max-width: 400px;
+            height: auto;
+            margin: 0 auto;
+            border: 1px solid white;
+            padding:10px;
+            box-sizing: border-box;
+            background: black;
+            color: white;
+        }
+    
+    </style>
+</head>
+
+
+
+<body>
+    <section id="seccion">
+       <div>
+        <button>presioname</button>
+        </div>
+    </section>
+    
+    <section>
+        <button>presioname una unica vez</button>
+    </section>
+    
+    <script >
+        var boton= document.getElementsByTagName("button")[0];
+        var seccion=document.getElementById("seccion");
+        var div= document.getElementsByTagName("div")[0];
+        var boton2= document.getElementsByTagName("button")[1];
+
+        function lanzador(){
+            function soySeccion(){
+                alert("soy section");
+            }
+            function soyDiv(){
+                alert("soy Div");
+            }
+            function soyButton(){
+                alert("soy Button");
+            }
+            seccion.addEventListener("click",soySeccion,false);//el false hace que los eventos sucedan de adentro hacia afuera, es decir, boton esta dentro de div,y este a su vez dentro de section, asi que ira primero boton, div y finalmente section
+            div.addEventListener("click",soyDiv,true);//pero si este div tiene true en el add, el ira primero, y despues seguira el curso normal, es decir boton y section, es decir los true van de afuera hacia adentro
+            boton.addEventListener("click",soyButton,false);
+            
+            var x=1;
+            function lanzar(){
+                
+                   
+                    alert("puedes clickear una vez mas");
+                
+                 if(x==2){
+                        boton2.removeEventListener("click",lanzar,false);
+                     }
+                 x++;
+                    console.log(x);    
+            }
+           
+                boton2.addEventListener("click",lanzar,false);
+            
+            
+                
+        }
+
+       window.addEventListener("load",lanzador,false);//el addeventlistener, hace que el navegador este pendiente de si el evento especificado en los parentesis ocurra, asi el activara la funcion que le hayamos dado
+        
+        
+        
+        
+    
+    </script>
+</body>
+</html>

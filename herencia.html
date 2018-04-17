@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background: aqua;
+            margin-bottom: 10px;
+        }
+    </style>
+    <section>
+        <script>
+        function escribir(x){
+            document.write(x+"<br><br>");
+        }
+            function log(x){
+            console.log(x);
+        }
+            
+            function Persona(nombre,edad){
+                this.nombre= nombre;
+                this.edad= edad;
+            }
+            
+            Persona.prototype.saludar= function(nombre){
+                escribir("hola "+nombre+" soy "+this.nombre+" tengo: "+this.edad+" años de edad");//recordar que los this.nombre y this.edad, son propiedades publicas que cada instancia recibe y puede usar, nombre es solo una variable dentro de esta funcion que recibe como valor lo que le manden en la llamada
+            }
+            
+            function Robot(nombre, edad){
+                Persona.call(this,nombre,edad);//call es una funcion que llama funciones u objetos, para que les pasemos variables que tenemos a ellos, y colocamos siempre de primero el this, es como si la funcion fuera el this.nombre this.edad de robot, pero como el es un hijo de persona, bien podemos usar esas propiedades de el
+                //Persona.prototype.constructor.call(this,nombre,edad);tambien sirve asi, en otras palabras persona esta trayendo su constructor aqui, o el constructor de robot, es el mismo de persona
+                
+                this.sumar= function(num1,num2){
+                    log(num1+num2);
+                }
+            }
+            
+            
+            Robot.prototype= new Persona();//asi una clase hereda de otra en js, con la propiedad prototype, es decir el prototipo de robot es el mismo de persona
+            
+            var johan= new Persona("johan",26);
+            
+            johan.saludar("karla");
+            
+            var pepito= new Robot("pepito",100);
+            
+            
+            pepito.saludar("carlos");
+            
+            log(johan.constructor);
+            log(pepito.constructor);
+            
+            Robot.prototype.constructor= Robot;//correcion del constructor, para que no muestre el de persona, seria recomendado hacer esto con cada herencia
+            log(pepito.constructor);//umm pues no se para que asignar de constructor el constructor de el mismo, solo es el "mismo codigo", es decir no cambia nada, pepito sigue funcionando igual, esto solo sirve si queremos que una funcion  haga exactamente el codigo dentro de robot
+            
+            
+            pepito.saludar("carlos");
+            
+            pepito.sumar(3,4);//pepito tiene ademas esta funcion, pero johan y cualquier otra instancia de Persona no, esto es de los Robot
+            
+            Robot.prototype.sumar2= function(num1,num2){//de esta manera solo funciona si corregimos el constructor de Robot, si no, nos dara error, aunque tambien sirve haberla creado dentro del constructor mismo de Robot como el del metodo sumar, problemas por ser una clase que tiene una clase padre
+                log(num1+num2);
+            }
+            
+            pepito.sumar2(2,3);
+            
+            
+            function HijoRobot(nombre,edad){
+                Robot.call(this,nombre,edad);
+                
+            }
+            
+            HijoRobot.prototype= new Robot();
+            
+            var ludo= new HijoRobot("pepito","infinitos");
+            
+            ludo.saludar("yuko");
+            
+           
+            
+            HijoRobot.prototype.saludo= function(){
+                log("hola putos");
+            }
+            
+            HijoRobot.prototype.constructor= HijoRobot;
+            
+           log(ludo.constructor);
+            
+            HijoRobot.prototype.carro= "ford";
+            HijoRobot.prototype.correr= function(){
+                    alert("correr");
+                };
+            
+            /*HijoRobot.prototype= {//se supone que en un objeto literal se pueden declarar propiedades pero no me funciono
+                correr: function(){
+                    alert("correr");
+                },
+                carro: "ford"
+            }
+            */
+            
+            
+            ludo.saludo();
+            escribir(ludo.carro);
+            ludo.correr();
+            
+    </script>
+    </section>
+    
+</body>
+</html>

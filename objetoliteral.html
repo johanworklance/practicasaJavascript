@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background: aqua;
+            margin-bottom: 10px;
+        }
+    </style>
+    <section>
+        <script>
+        function escribir(x){
+            document.write(x+"<br><br>");
+        }
+            
+            var obj_literal={//objeto literal de la clase objeto, es como una clase mas sencilla
+                nombre: "miobjeto",//sus proiedades se separan con comas ,
+                edad: 25,
+                saludar: function(nombre){//tambien pueden ser una funcion
+                    escribir("hola "+nombre);
+                },
+                estilos:{//o otro objeto literal
+                     azul:[//tambien pueden ser arrays
+                         {//y los elementos de un array tambien pueden ser objetos literales
+                             azul1:"azul claro",
+                             azul2:"azul medio",
+                             azul3:"azul oscuro"
+                         },
+                         25,
+                         "texto"
+                     ],
+                     rojo:"rojo",
+                     verde:"verde"
+                
+                }
+                
+                
+            }
+            
+            escribir(obj_literal.nombre);
+            escribir(obj_literal.edad);
+            
+            obj_literal.saludar("alexis");
+            escribir(obj_literal.estilos.rojo);
+            escribir(obj_literal.estilos.azul[1]);
+            escribir(obj_literal.estilos.azul[0].azul2);//la nomenclatura del punto .
+            
+    </script>
+    </section>
+    
+</body>
+</html>

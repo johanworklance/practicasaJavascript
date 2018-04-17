@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background: aqua;
+            margin-bottom: 10px;
+        }
+    </style>
+    <section>
+       <h2>cambiar el color de fondo</h2>
+       <form action="">
+           <select name="colorFondo" id="colorFondo">
+               <option value="">selecciona un color de fondo</option>
+               <option value="red">rojo</option>
+               <option value="blue">azul</option>
+               <option value="green">verde</option>
+               <option value="yellow">amarillo</option>
+           </select>
+       </form>
+       <br>
+       
+       <button id="borrar">borrar cookie</button>
+       
+        <script>
+        function escribir(x){
+            document.write(x+"<br><br>");
+        }
+            function log(x){
+            console.log(x);
+        }
+            /*document.cookie= "miCookie=este es el valor; expires=15 Dec 2018 00:00:00 UTC";//asi se crean las cookies,esta tiene fecha de vencimiento, tambien sirve con el parametro max-age=10, eso indica que duraria 10s, hay otras mas como path=/micarpeta, domain=midominico.com, secure
+            
+            //si colocamos una fecha anterior a la actual del pc, se borrara
+         
+            function guardarCookie(nombre, valor){
+                document.cookie= nombre+"="+valor;
+                escribir(nombre+" = "+valor);
+            }
+            
+            var n= prompt("ingresa el nombre de la cookie");
+            var c= prompt("ingresa el valor de la cookie");
+            
+            
+            
+            guardarCookie(n,c);
+            
+            escribir(document.cookie);//retorna un string*/
+            
+            var colorFondo= document.getElementById("colorFondo");
+            var seccion= document.getElementsByTagName("section")[0];
+            var borrar=  document.getElementById("borrar");
+            var cookies= document.cookie;
+        
+            
+            
+            function guardarCookie(nombre, valor,dia_caducida){
+                
+                var f= new Date();
+                
+                f.setTime(f.getTime+(dia_caducida*24*60*60*1000));//las cookies duraran un año, usamos el metodo getTime para obtener un valor que comprende una fecha larga, + el calculo de (dia_caducida*horas*minutos*segundos*milisegungos) que es el formato que trae getTime, se lo sumamos y tendriamos la fecha actual mas 1 años que especifique en dia_caducida cuando llame a este metodo desde el metodo cambioColor, y con setTime establecemos esa fecha actual nueva
+                
+                var caduca= "expires="+f.toUTCString();//metodo para convertir ese calculo largo a formato UTC
+                document.cookie= nombre+"="+valor+";" +caduca;
+                
+            }
+            
+            function borrarCookie(){
+                document.cookie= "fondo=cualquiercosa; expires=31 Dec 1900 23:59:59 GMT";//es decir reescribimos la cookie fondo
+                setTimeout(function(){//que recarge la pagina despues de cierto tiempo
+                    location.reload;
+                });
+            }
+            function cambioColor(){
+                seccion.style.backgroundColor= colorFondo.value;
+                guardarCookie("fondo",colorFondo.value,365);//cada que cambiemos de color volvemos a crear la cookie fondo, pero con distinto valor
+            }
+            
+            function leerCookie(nombre){
+                var listaCookies= cookies.split(";");//entonces sera un array con valores fondo=amarillo;fondo=red y asi
+                
+                for(i in listaCookies){
+                    var busca= listaCookies[i].search(nombre);//search metodo de la clase de exprsiones regulares, busca lo que le pasemos en el parentesis, si no encuentra retorna -1, si encuentra retorna laposicion desde donde encontro lo que le mandamos a buscar, esto lo hacemos para ver si existe la cookie con el nombre que le pasemos
+                    if(busca > -1){//sila encuentra entra aqui
+                        var fondo= listaCookies[i];//esto tiene valores asi "fondo=yellow"
+                        var igual= fondo.indexOf("=");//encontramos la posicion donde aparece el =
+                        var valor= fondo.substring(igual+1);//aqui substring, nos mandara todo el resto del string, desde donde aparece el = pero +1, para que nos de el valor, ejemplo= fondo=blue
+                    }
+                }
+                seccion.style.backgroundColor= valor;
+            }
+            
+            
+            leerCookie("fondo");//aqui buscara la cookie llamada fondo, la cual deacuerdo al select tendra distinto valor
+            borrar.addEventListener("click",borrarCookie);
+            colorFondo.addEventListener("change",cambioColor);//evento change, no se que hace en si, creo que se ejecuta cuando el select tiene cambios en su value
+            
+            
+    </script>
+    </section>
+    
+</body>
+</html>

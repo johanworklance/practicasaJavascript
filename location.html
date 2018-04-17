@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>location</title>
+</head>
+
+<style>
+    
+    section{
+        
+        border: 2px solid black;
+        
+        padding: 10px;
+        background: aqua;
+        margin-bottom: 10px;
+    }
+    
+    
+    
+    </style>
+<body>
+  
+   <section>
+    <button onclick="cargarPagina()" > cargar pagina</button>
+    <button onclick="recarga()">recarga</button>
+    <button onclick="reemplaza()">reemplaza</button>
+    
+    
+     <script>
+            function escribir(x){
+                document.write(x+"<br>");
+            }
+            escribir(location.hash);//devuelve lo que esta despues de un #
+         escribir(location.host);//retorna el nombre del host, y si puerto
+         escribir(location.hostname);//retorna solo el nombre
+         escribir(location.href);//obtenemos toda la url
+         escribir(location.origin);//retorna el protocolo,hostname y puerto
+         escribir(location.pathname);//nombre de la ruta, la carpeta donde esta el archivo
+         escribir(location.port);//puerto
+         escribir(location.protocol);//protocolo
+         escribir(location.search);//retorna el valor de la url a partir de un ?  cuando usamos el metodo get
+         
+         
+         function cargarPagina(){
+             location.assign("http://google.com.ve");//muestra una pagina
+             
+         }
+         
+         function recarga(){
+             location.reload();//recarga o f5
+             
+         }
+         
+         function reemplaza(){
+             location.replace("http://google.com.co");//es como el assign no entiendo
+         }
+        
+    </script>
+      
+   </section>
+   
+   
+    
+    
+    
+    
+    
+</body>
+</html>

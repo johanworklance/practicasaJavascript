@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>document</title>
+</head>
+
+<style>
+    
+    section{
+        
+        border: 2px solid black;
+        
+        padding: 10px;
+        background: aqua;
+        margin-bottom: 10px;
+    }
+    
+    .predefinido{
+        color: blue;
+        font-size: 50px;
+    }
+    
+    </style>
+<body>
+  <pre>
+      <script>
+        document.writeln("hola");//saltos de linea, solo sirve dentro de pre, o etiquetas con  estilo pre
+        document.writeln("loco");
+      </script>
+  </pre>
+  
+  <button id="boton" onclick="crearBoton()">click</button>
+  <button id="boton2" onclick="crearAtributo()">agregar atributo al h1</button>
+  <a href="#inicio" name="enlace1"
+  >esto es un enlace</a>
+  
+  
+  <h1>hola mundo</h1><br>
+  <form action="codigo.php" method="post">
+      
+      <input name="input1" type="text" value="input1"><br>
+      <input name="input2" type="text" value="input2"><br>
+      <input name="input3" type="text" value="input333333333333"><br>
+  </form>
+  
+   <section>
+     <script>
+            function escribir(x){
+                document.write(x+"<br>");
+            }
+            escribir(document.title);
+            escribir(document.anchors[0]);//href del primer enlace 
+            escribir(document.anchors[0].name);//name
+         
+         escribir(document.forms[0].elements[0].name);
+         escribir(document.forms[0].elements[1].name);
+         escribir(document.forms[0].elements[2].value);
+         
+         function crearBoton(){
+             var btn =document.createElement("button");//crea elementos html
+             
+             btn.innerHTML="hola";
+             document.getElementsByTagName("section")[0].appendChild(btn);//permite que elementos creados en el script, sean colocados dentro de una etiqueta padre ya existente, es decir pondra a btn dentro de la primera section
+             var comentario= document.createComment("esto es un comentario");//crea un comentario en html looool
+             document.getElementsByTagName("section")[0].appendChild(comentario);
+             
+             
+         }
+         function crearAtributo(){
+             var h1= document.getElementsByTagName("h1")[0];
+             var atr= document.createAttribute("class");//creamos el atributo class, aun no esta asignado a nada
+             atr.value= "predefinido";//es como el ="predefinido" del class
+             h1.setAttributeNode(atr);//aqui asignamos el class al h1, como si escribieramo class=""
+         }
+       
+         
+         escribir(document.scripts.length);//numero de etiquetas scripts
+         
+         
+        
+    </script>
+      
+   </section>
+   
+   
+    
+    
+    
+    
+    
+</body>
+</html>

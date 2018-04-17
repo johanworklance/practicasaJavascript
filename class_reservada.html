@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background: aqua;
+            margin-bottom: 10px;
+        }
+    </style>
+    <section>
+        <script>
+        function escribir(x){
+            document.write(x+"<br><br>");
+        }
+            function log(x){
+            console.log(x);
+        }
+            
+            function MiObjeto(arg){
+                this.arg= arg;
+            }
+            
+            MiObjeto.prototype.escribePropiedad= function(){
+                escribir(this.arg);
+            }
+            
+            var objeto= new MiObjeto("holaaa soy una instancia");
+            
+            objeto.escribePropiedad();
+            
+            function Miobjeto2(x){//recordar la x, es para representar el parametro arg de la clase padre
+                MiObjeto.call(this,x);
+            }
+            
+            Miobjeto2.prototype= new MiObjeto();//herencia
+            
+            var objeto2= new Miobjeto2("hola soy una instancia de clase hija de la primera");
+            
+            objeto2.escribePropiedad();
+            
+            //forma clasica de js--------------------------------------------------
+            
+            (function(){
+                'use strict';
+                
+                class Persona{
+                    constructor(nombre,edad){//entonces todo el tiempo el parentesis de las clases creadas con function eran su metodo constructor
+                        this.nombre= nombre;
+                        this.edad= edad;
+                    }
+                    
+                    getNombre(){//no necesitamos colocar function a las funciones dentro del uso de la palabra reservada class
+                        escribir("desde el metodo getNombre "+this.nombre);
+                    }
+                    getEdad(){
+                        escribir("desde el metodo getEdad "+this.edad);
+                    }
+                    
+                    setNombre(nom){
+                        this.nombre= nom;
+                    }
+                    
+                    setEdad(ed){
+                        this.edad= ed;
+                    }
+                    
+                    
+                }
+                
+                var yo = new Persona("johan",26);
+                
+                escribir(yo.nombre);
+                escribir(yo.edad);
+            
+                yo.getNombre();
+                yo.getEdad();
+                
+                
+                yo.setNombre("alexis");
+                yo.setEdad(25);
+                
+                yo.getNombre();
+                yo.getEdad();
+                
+                class Robot extends Persona{// es mas facil hacer herencia asi, sin tener que usar prototype y el metodo call
+                    
+                    constructor(x,z){// y debemos enviar tambien los parametros de nombre y edad otra vez
+                        super(x,z);//debemos usar super por que al ser una herencia robot usa el constructor de su padre, es como la funcion call, si no lo hacemos no podremos crear propiedades nuevas para Robot
+                        this.propiedad1= "cualquiercosa";
+                    }
+                    
+                    saludar(x){//umm es raro las propiedades usan el this, como con el metodo de las function, pero los metodos no lo necesitan aqui raro
+                        escribir("holaaa soy un robot "+x);
+                    }
+                    saludar2(){
+                        super.getNombre();//super nos permite llamar metodos de clases padre o colocar this.getNombre, ya que robot hereda todas las propiedades de su padre
+                    }
+                    
+                }
+                
+                var tu = new Robot("ROBOT","infinito");
+                
+                tu.getNombre();
+                tu.getEdad();
+                tu.saludar("mario");
+                tu.saludar2();
+                escribir(tu.propiedad1);
+            })();
+            
+            
+            
+            
+    </script>
+    </section>
+    
+</body>
+</html>

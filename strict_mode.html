@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background: aqua;
+            margin-bottom: 10px;
+        }
+    </style>
+    <section>
+        <script>
+            
+            
+        function escribir(x){
+            document.write(x+"<br><br>");
+        }
+            function log(x){
+            console.log(x);
+        }
+            
+            /*(function(){// se suele usar en una funcion anonima autoejecutable
+                //modo pajuo de js, mucho mas exigente
+            'use strict';
+                
+                var cualquiera= 2; //si o si se debe declarar una variable con el var
+                escribir(cualquiera);
+                
+                escribir(Math.PI);
+                //escribir(Math.PI=15);//en este modo no podemos modificar el valor de las propiedades de las clases predefinidas de js
+                
+            })();*/
+            
+            
+            /*function z(b,b){ //en modo strict, los parametros no pueden tener el mismo nombre
+            
+            'use strict';
+                return b;
+            }
+            
+            escribir(z(7,16));*/
+            
+            /*function x(m){
+                'use strict';// en modo strict, el no hara caso al array arguments que aqui recibio en su posicion 0 a la variable m, que vale 17
+                arguments[0]= 7;//y que despues reasignamos su valor, es decir el le da prioridad a los parametros que enviemos, y no al arguments
+                return m;
+            }
+            
+            escribir(x(17));
+            
+            
+            function f(x){
+                //'use strict';
+                var h= 6;
+                delete h;//delete permite eliminar variables o propiedades de una clase, en stric mode no funciona
+                delete x;
+            }*/
+            
+            /*var cadenaTexto= "if(x){5+5}else{5+3}"
+            var x=true;
+            var z= eval(cadenaTexto);//es un metodo que recibe un string, que tenga en su interior una sentencia js, si x es true, z tendra el valor de la ejecucion, es decir 10, los evals en si ejecutan el codigo que reciben como string, pero solo si es un codigo
+            escribir(z);
+            
+            (function(){
+                'use strict';
+                eval("var y=2;");// en modo strict, no podemos declarar variables o metodos dentro de un eval
+                escribir(y);
+                
+            })();*/
+            
+            
+            /*function x(){
+                'use strict';
+                return this;//retornamos su objeto con esta sentencia
+            }
+            
+            escribir(x.call(undefined));//retorna el objeto window, ni puta idea de para que es esto, pero si retornamos el objeto de x en modo strict, nos devuelve estos valores tal cual
+            escribir(x.call(null));*/
+            
+            (function(){
+                'use strict';//no permite declarar variables con estos nombres
+                var eval=8;
+                var arguments=7;
+                
+                escribir(eval);
+                escribir(arguments);
+                
+            })();
+            
+    </script>
+    </section>
+    
+</body>
+</html>

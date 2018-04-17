@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background: aqua;
+            margin-bottom: 10px;
+        }
+    </style>
+    <section>
+        <script>
+        function escribir(x){
+            document.write(x+"<br><br>");
+        }
+            function log(x){
+            console.log(x);
+        }
+            
+            function x(arg,callback){
+                callback(arg);//asi se crea un callback, una funcion recibida como parametro de otra funcion, colocamos su nombre arriba como parametro, y aqui simplemente la llamamos y le paso el otro argumento que se le paso a x
+            }
+            
+            x("hola",function(arg){ //cuando pasamos la funcion en el llamado de hola debemos especificar, si recibira ella tambien parametros y que codigo usara, es decir primero creamos la funcion, se la pasamos como parametro a x, y el la llamara dentro de su objeto
+                escribir(arg)
+            });//esto es como el addeventlistener
+            
+            
+           function escribe(arg,callback){
+               escribir(arg);
+               
+               if(callback){
+                   if(typeof callback== 'function'){
+                       callback();//las funciones callback son para que otra funcion sea quien las llame
+                   }
+               }
+           } 
+            
+            escribe("hola locoooooo");//puedo omitir el parametro de la funcion callback, ya que ya escribe hace algo antes
+            
+            escribe("que tal locooooo",function(){
+                escribe("callense locos soy un fucking callback, llamado desde la funcion escribe cuando comprobo que yo era una funcion");
+            });
+            
+    </script>
+    </section>
+    
+</body>
+</html>

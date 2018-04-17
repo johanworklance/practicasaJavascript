@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>string</title>
+</head>
+<body>
+    <script>
+    function escribir(x){
+        document.write(x+"<br>");
+    }
+    var cadena= " esto es una Cadena ";
+        var cadena2= " esto, es una Cadena ";
+    var obj_cadena= new String(" esto es una cadena ");
+    
+        
+        escribir(cadena);
+        escribir(cadena.length);//unica propiedad de la clase string, devuelve el numero de caracteres con espacios en blanco
+        escribir(cadena.charAt(13));//devuelve el caracter dentro del indice indicado
+        escribir(cadena.indexOf('una',5));//nos devuelve la posicion del caracter que busquemos, segundo parametro opcional, es para decir desde que posicion buscar, si no encuentra nos dara -1
+        escribir(cadena.lastIndexOf('Cadena',15));//es la inversa del index, comienza desde el final, y estos metodos son case sensitive
+        escribir(cadena.replace("Cadena","nuevaCadena"));//reemplaza palabras
+        var array_cadena= cadena.split(" ");//divide el texto, deacuerdo a lo que este entre comillas, por ejemplo un espacio " " , y lo reemplaza por (,), si el string tiene un espacio al inicio, lo cuenta como una palabra a separar tambien
+        escribir(array_cadena);
+        escribir(array_cadena[3]);
+        var array_cadena2= cadena2.split(",");//tambien podemos especificar bajo que caracter separara el texto
+        escribir(array_cadena2);
+        escribir(array_cadena2[1]);
+        escribir(cadena.substring(5,15));//devuelve una cadena entre las posiciones que indiquemos
+        escribir(cadena.substr(5,15));//es igual al anterior pero no toma los espacios en blanco como posiciones de un array, solo los caracteres, aun asi muestra los espacios
+        escribir(cadena.trim());//elimina los espacios al principio y al final de un string
+        escribir(cadena.toLowerCase());
+        escribir(cadena.toUpperCase());
+        escribir(cadena.strike());//un tachado
+        escribir(cadena.sup());//superindice
+        escribir(cadena.sub());//subindice, pa h2o y esas cosas, exponentes
+        escribir(cadena.anchor("nombre_atributo_name"));//convienrte a la cadena en un elemento de enlace con atributo name="nombre_atributo_name" 
+        escribir(cadena.link("http://misitioweb.com"));//convierte a la cadena en un enlace, con un href="http://misitioweb.com"
+        
+        var num1=3, num2=4;
+        escribir(num1+num2);
+        
+        escribir(num1+num2.toString());//toString convierte cualquier valor a string
+        
+    
+    </script>
+</body>
+</html>

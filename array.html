@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background: aqua;
+            margin-bottom: 10px;
+        }
+    </style>
+    <section>
+        <script>
+        function escribir(x){
+            document.write(x+"<br><br>");
+        }
+        
+        var matriz= new Array();
+        
+        var frutas=["limon","naranza","banana","manzana","mango","pera","piña"];
+        
+        
+        escribir("");
+        escribir(frutas.length);
+       
+            //var concatenado= frutas.concat("valor1","valor2",25);
+            var concatenado= frutas.concat(edades);//suma 2 arrays, o los valores que agregemos en parentesis
+            escribir(concatenado);
+            
+            var cadena= frutas.join();//convierte a todos los elementos en un string con todo y comas ,
+            escribir(cadena);
+            escribir(cadena[0]);//es la l de limon, por que es la posicion 0 de ese string, ya cadena no es un array, los metodos de abajo no funcionan en el
+            //escribir(frutas.reverse());//lo pone al revez
+            escribir(concatenado.sort());//ordena el array alfabeticamente, si hay numeros van primero
+            frutas.shift();//elinmina al primer elemento
+            escribir(frutas);
+            frutas.pop();//elimina al ultimo
+            escribir(frutas);
+            
+            
+            
+            frutas.unshift("coco","lulo");//agrega al inicio
+            frutas.push("patilla");//al final
+            escribir(frutas);
+            
+            escribir(frutas.slice(0,6));//muestra una porcion del array, desde el indice 0 hasta el 6, pero no muestra este ultimo
+            escribir(frutas.splice(3,1,"fresa"))//indice 3, elimina valores a partir de la posicion dada, y en el segundo parametro cuantas posiciones eliminara y devuelve el elemento eliminado, en el tercer parametro indicamos que colocara en su lugar, este ultimo opcional
+            escribir(frutas);
+            
+            
+            escribir(frutas.toString());//umm convierte al array en cadena de texto, pero no como el join, este ultimo es mas como para asignar a variables
+            
+             var edades= [5,7,19,25];
+            
+            function revisarEdad(edad){
+                return edad>=18;//esta raro si, pero las funciones some y every, exigen pasarles una funcion  que retorne la condicion a aevaluar, la variable la pasan ellos, la cual es en si cada elemento del array, en este caso las edades
+            }
+            
+            if(edades.some(revisarEdad)){//si alguno cumple la codicion de la funcion revisarEdad true
+                escribir("paso la prueba");
+            }else{
+                escribir("no paso la prueba");
+            }
+            if(edades.every(revisarEdad)){//si todos cumplen la codicion true
+                escribir("paso la prueba");
+            }else{
+                escribir("no paso la prueba");
+            }
+            
+            var filtro= edades.filter(revisarEdad);//filtra los valores, deacuerdo aquien cumple con la codicion impuesta en la funcion, es decir que sean mayores a 18
+                                      
+            escribir(filtro);// solo 19 y 25 pasaron
+            
+            
+    </script>
+    </section>
+    
+</body>
+</html>

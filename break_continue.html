@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>break-continue</title>
+    
+    <style>
+        body{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        table{
+            border: 1px solid black;
+            padding: 20px;
+            background: aquamarine;
+            margin: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    
+    
+    
+    <script>
+        var x= 1
+        var y= 12
+        
+    //continue pasa de las iteraciones indicadas, el break rompe o termina el ciclo entero de la funcion
+        
+        for(x;x<=y;x++){//for principal
+            
+            document.write(x+" ");//mostrara todos los numeros, menos el 12, por que rompi el for cuando x valia 11, asi que nunca sumo un 1 al mismo
+            if(x==4){
+                continue;//salta la iteracion del 4 y continua el codigo por donde iba es decir ahora va el 5, es como si aqui finalizara la iteracion 4 del for principal y le hiciera el x++ sin siquiera haber terminado todo el codigo que le tocaba
+            }
+            //estos continue y break son del for principal
+            if(x==7 || x==9){//adios tablas del 7 y 9
+                continue;//estos continues no afectan a la expresion final del for cada que se itera, el sigue iterando normal, es decir si aqui continue, sumara al 7+1=8 o 9+1=10, y seguira hasta que termine
+            }
+            
+            if(x==11){
+                break;//no me mostro ni la tabla 11 ni 12, debido a que el break rompe o termina de una vez con las iteraciones del ciclo for principal, cuando el valor de x o la expresion inicial es igual al 11 que coloque
+            }
+            document.write("<table>");
+
+            document.write("<caption>tabla del "+x+"</caption>");
+            
+            document.write("<thead><tr><th>operacion = </th><th>resultado</th></tr></thead>");
+
+            document.write("<tbody>");
+
+                for(var i =0;i<=12;i++){//for anidado
+
+                            document.write("<tr>");//recordar las tablas tienen fila
+
+                            document.write("<th>");
+                            document.write(x+" x "+i+" = ");//y estas son sus celdas
+                            document.write("</th>");
+
+                            document.write("<th>");
+                            document.write(x*i);//y estas son sus celdas
+                            document.write("</th>");
+
+
+                            document.write("</tr>");
+                }
+
+            document.write("</tbody>");
+
+            document.write("</table>");
+        }//madre mia lo hice
+    
+        
+        num=0;
+        
+        while (num<=5){
+            
+            alert("el numero vale "+num);
+            
+            if(num==3){
+                break;//aqui un ejemplo del break, en el 3 termino con el ciclo while, si quitara esto el seguiria hasta llegar al valor 6 y se saldria el while
+            }
+            num++;
+            alert(num);
+        }
+        
+        
+    </script>
+    
+    
+    
+</body>
+</html>

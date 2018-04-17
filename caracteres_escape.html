@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+        section{
+            border: 2px solid black;
+            padding: 10px;
+            background: aqua;
+            margin-bottom: 10px;
+        }
+    </style>
+    <pre>
+        <script>
+        function escribir(x){
+            document.write(x+"<br><br>");
+        }
+            function log(x){
+            console.log(x);
+        }
+            
+            /*
+            \n salto de linea                  es un enter
+            \r salto de carro                  este es igual a salto de linea
+            \t tabulacion horizontal           una sangria
+            \v tabulacion vertical              no se
+            \' comilla simple o apostrofe
+            \" comilla doble                    para poder usar las comillas dentro de las comillas del js
+            \\ barra invertida                  agrega una barra
+            \u00XX inicio de l unicode          para agregar ñ o acentos por ejemplo la ó es \u00f3
+            
+            */
+            
+            var a= "palabra \"navidad\",  funci\u00f3n      \\renacimiento\\";
+            
+            escribir(a);
+            
+    </script>
+    </pre>
+    
+</body>
+</html>
